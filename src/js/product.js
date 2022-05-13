@@ -28,6 +28,14 @@ function setLocalStorage(key, data) {
 //   setLocalStorage('so-cart', product);
 // }
 
-// // getProductsData();
-// // add listener to Add to Cart button
-// document.getElementById('addToCart').addEventListener('click', addToCart);
+getProductsData();
+// add listener to Add to Cart button
+document.getElementById('addToCart').addEventListener('click', addToCart);
+
+// Function to add class to cart to access css that contains animation --KE
+function cartAnimation(){
+  document.querySelector('.cart').classList.add('cartAnimate')
+}
+
+// adding listener to Add Cart button to animate backpack (cart) --KE
+document.querySelector('#addToCart').addEventListener('click', cartAnimation);
