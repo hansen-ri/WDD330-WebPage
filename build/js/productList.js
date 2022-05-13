@@ -1,0 +1,1 @@
+var l=(o,s,a)=>new Promise((i,r)=>{var n=t=>{try{c(a.next(t))}catch(e){r(e)}},u=t=>{try{c(a.throw(t))}catch(e){r(e)}},c=t=>t.done?i(t.value):Promise.resolve(t.value).then(n,u);c((a=a.apply(o,s)).next())});export default class d{constructor(s,a,i){this.category=s,this.dataSource=a,this.listElement=i}init(){return l(this,null,function*(){const s=yield this.dataSource.getData()})}}
