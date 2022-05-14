@@ -5,10 +5,12 @@ function getLocalStorage(key) {
 function getCartContents() {
   let markup = '';
   const cartItems = getLocalStorage('so-cart');
-  console.log("cartItems" + cartItems);
-  const htmlItems = cartItems.map((item) => renderCartItem(item));
-  document.querySelector('.product-list').innerHTML = htmlItems.join('');
-  // document.querySelector(".product-list").innerHTML = renderCartItem(cartItems);
+  if (!Object.keys(cartItems).length === 0) {
+    const htmlItems = cartItems.map((item) => { 
+      return renderCartItem(item); 
+    });
+    document.querySelector('.product-list').innerHTML = htmlItems.join('');
+  }
 }
 
 function renderCartItem(item) {
