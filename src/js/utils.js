@@ -1,3 +1,11 @@
+function convertToText(res) {
+  if (res.ok) {
+    return res.text();
+  } else {
+    throw new Error('Bad response');
+  }
+}
+
 // wrapper for querySelector...returns matching element
 export function qs(selector, parent = document) {
   return parent.querySelector(selector);
@@ -25,15 +33,38 @@ export function setClick(selector, callback) {
 export function getParams(param) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  const product = urlParams.get('product');
-  return product;
+  return urlParams.get('product');
 }
 
 export function renderListWithTemplate(template, parent, list, callback){
-        list.forEach(item => {
-            const clone = template.content.cloneNode(true);
-            const templateWithData = callback(clone, item);
-            parent.appendChild(templateWithData);
-      
-        });
+  list.forEach(item => {
+      const clone = template.content.cloneNode(true);
+      const templateWithData = callback(clone, item);
+      parent.appendChild(templateWithData);
+
+  });
+}
+
+export function renderWithTemplate(template, parent, data, callback) {
+  let clone = template.content.cloneNode(true);
+  if (callback) {
+    clone = callback(clone, data);
+  } 
+  parent.appendChild(clone);
+};
+
+export async function loadTemplate(path) {
+  const html = await fetch(path).then(convertToText);
+  const template = document.createElement('template');
+  template.innerHTML = html;
+  return template;
+}
+
+export async function loadHeaderFooter() {
+  const header = await loadTemplate('../partials/header.html');
+  const footer = await loadTemplate('../partials/footer.html');
+  const headerTemplate = document.getElementById('main-header');
+  const footerTemplate = document.getElementById('main-footer');
+  renderWithTemplate(header, headerTemplate);
+  renderWithTemplate(footer, footerTemplate);
 }
