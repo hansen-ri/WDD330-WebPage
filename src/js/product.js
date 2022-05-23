@@ -26,12 +26,13 @@ function setLocalStorage(key, data) {
 //   products = await fetch("../json/tents.json").then(convertToJson);
 // }
 
-// add to cart button event handler
-// function addToCart(e) {
-//   setLocalStorage('so-cart', product);
-// }
+//add to cart button event handler
+function addToCart() {
+  setLocalStorage('so-cart', product);
+}
 
-getProductsData();
+// getProductsData();
+
 // add listener to Add to Cart button
 document.getElementById('addToCart').addEventListener('click', addToCart);
 
@@ -42,3 +43,4 @@ function cartAnimation(){
 
 // adding listener to Add Cart button to animate backpack (cart) --KE
 document.querySelector('#addToCart').addEventListener('click', cartAnimation);
+
