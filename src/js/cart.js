@@ -1,13 +1,19 @@
 function getLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
+  
 }
+
+console.log(getLocalStorage('so-cart'));
 
 function getCartContents() {
   let markup = '';
   const cartItems = getLocalStorage('so-cart');
-  if (!Object.keys(cartItems).length === 0) {
+  // console.log(Object.keys(cartItems));
+  if (Object.keys(cartItems).length > 0) {
     const htmlItems = cartItems.map((item) => { 
-      return renderCartItem(item); 
+    markup += renderCartItem(item); 
+    return markup;
+      
     });
     document.querySelector('.product-list').innerHTML = htmlItems.join('');
   }
