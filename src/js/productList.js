@@ -1,4 +1,4 @@
-import { renderListWithTemplate } from "./utils.js";
+import { renderListWithTemplate } from './utils.js';
 
 
 export default class ProductList {

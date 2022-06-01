@@ -18,7 +18,7 @@ export default class ProductDetails {
       // console.log("this is the product ID:" + this.productId); //get rid of this
       var text = this.renderProductDetails();
       console.log(text);
-      console.log("here");
+      console.log('here');
       document.querySelector('#details-main').innerHTML = this.renderProductDetails();
       document.getElementById('addToCart').addEventListener('click', this.addToCart.bind(this));
       // console.log(htmlTest);
@@ -38,7 +38,7 @@ export default class ProductDetails {
       <h2 class="divider">${this.product.NameWithoutBrand}</h2>
       <img
          clas="divider"
-         src="${this.product.Image}"
+         src="${this.product.Image.PrimaryLarge}"
          alt="${this.product.NameWithoutBrand}"
       />
       <p class="product-card__price">$${this.product.FinalPrice}</p>
