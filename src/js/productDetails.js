@@ -1,5 +1,8 @@
 import { setLocalStorage } from './utils.js';
 import { getLocalStorage } from './utils.js';
+// import { loadHeaderFooter } from './utils.js';
+
+// loadHeaderFooter();
 
 export default class ProductDetails {
    constructor(productId, dataSource) {
@@ -9,10 +12,16 @@ export default class ProductDetails {
       this.dataSource = dataSource;
    }
    async init() {
+      console.log('asdf');
       this.product = await this.dataSource.findProductById(this.productId);
+      
       // console.log("this is the product ID:" + this.productId); //get rid of this
-      document.querySelector('main').innerHTML = this.renderProductDetails();
+      var text = this.renderProductDetails();
+      console.log(text);
+      console.log("here");
+      document.querySelector('#details-main').innerHTML = this.renderProductDetails();
       document.getElementById('addToCart').addEventListener('click', this.addToCart.bind(this));
+      // console.log(htmlTest);
    }
    addToCart() {
       if (getLocalStorage('so-cart') != null){
@@ -24,6 +33,7 @@ export default class ProductDetails {
 
    renderProductDetails () {
       // console.log("this is the product:" + this.product); //get rid of this
+   
       return `<section class="product-detail"> <h3>${this.product.Brand.Name}</h3>
       <h2 class="divider">${this.product.NameWithoutBrand}</h2>
       <img

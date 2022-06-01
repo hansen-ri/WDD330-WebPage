@@ -12,7 +12,8 @@ export default class ProductList {
     }
     async init() {
       // our dataSource will return a Promise...so we can use await to resolve it.
-      const list = await this.dataSource.getData();
+      const list = await this.dataSource.getData(this.category);
+      console.log(list);
       // render the list 
       this.renderList(list);
     }
@@ -42,8 +43,8 @@ export default class ProductList {
         template.querySelector('.card__brand').textContent +=  product.Brand.Name;
         template.querySelector('.card__name').textContent +=  product.NameWithoutBrand;
         template.querySelector('.product-card__price').textContent +=  product.FinalPrice;
-
         return template;
+        
       }
 
   }

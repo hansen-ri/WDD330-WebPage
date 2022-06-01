@@ -4,16 +4,18 @@ import { getParams } from './utils.js';
 import { loadHeaderFooter } from './utils.js';
 
 loadHeaderFooter();
-
+console.log('there again');
 // console.log(dataSource.getData());
-const dataSource = new ProductData('tents');
+
+const dataSource = new ProductData();
 const productId = getParams('product');
-const product = new ProductDetails(productId, dataSource);
+let product = new ProductDetails(productId, dataSource);
 product.init();
+console.log('there again2');
 
 // console.log(dataSource.findProductById(productId));
 
-// let products = [];
+let products = [];
 
 
 function setLocalStorage(key, data) {
