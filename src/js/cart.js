@@ -1,5 +1,5 @@
-import { loadHeaderFooter } from "./utils.js";
-import CartList from "./shoppingCart.js";
+import { loadHeaderFooter } from './utils.js';
+import CartList from './shoppingCart.js';
 
 loadHeaderFooter();
 
