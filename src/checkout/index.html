@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sleep Outside | Checkout</title>
-    <link rel="stylesheet" href="/src/css/style.css" />
+    <link rel="stylesheet" href="../css/style.css" />
     <script src="../js/checkout.js" type="module"></script>
   </head>
   <body>
@@ -44,6 +44,43 @@
     <main class="divider">
       <section class="products">
         <h2>Review & Place your Order</h2>
+
+        <form action="http://157.201.228.93:2992/checkout" method="post">
+          <fieldset>
+            <legend>Shipping</legend>
+            <label for="fname">First Name</label>
+            <input type="text" name="fname">
+            <label for="lname">Last Name</label>
+            <input type="text" name="lname">
+            <label for="street">Street</label>
+            <input type="text" name="street">
+            <label for="city">City</label>
+            <input type="text" name="city">
+            <label for="state">State</label>
+            <input type="text" name="state">
+            <label for="zip">Zip</label>
+            <input type="number" name="zip">
+          </fieldset>
+          <fieldset>
+            <legend>Payment</legend>
+            <label for="ccnum">Card Number</label>
+            <input type="number" name="ccnum">
+            <label for="exp">Expiration</label>
+            <input type="number" name="exp">
+            <label for="scode">Security Code</label>
+            <input type="number" name="scode">
+          </fieldset>
+          <fieldset>
+            <legend>Order Summary</legend>
+            <div>
+              <p>Item Subtotal</p><span>$100000000000000000</span>
+              <p>Shipping Estimate</p>
+              <p>Tax</p>
+              <p>Item</p>
+            </div>
+          </fieldset>
+          <a href="../checkout/index.html"><button>Checkout</button></a>
+        </form>
       </section>
     </main>
     <footer id="main-footer"></footer>

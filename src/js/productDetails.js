@@ -12,11 +12,14 @@ export default class ProductDetails {
       this.dataSource = dataSource;
    }
    async init() {
+      console.log("please, im beggin at this point");
+
       this.product = await this.dataSource.findProductById(this.productId);
       
-      var text = this.renderProductDetails();
-      console.log(text);
-      console.log('here');
+      console.log("here");
+      console.log("AHHHHHHHHHHHHHHHHHH!");
+
+      // var text = this.renderProductDetails();
       document.querySelector('#details-main').innerHTML = this.renderProductDetails();
       document.getElementById('addToCart').addEventListener('click', this.addToCart.bind(this));
    }
@@ -34,7 +37,7 @@ export default class ProductDetails {
       <h2 class="divider">${this.product.NameWithoutBrand}</h2>
       <img
          clas="divider"
-         src="${this.product.Image.PrimaryLarge}"
+         src="${this.product.Images.PrimaryLarge}"
          alt="${this.product.NameWithoutBrand}"
       />
       <p class="product-card__price">$${this.product.FinalPrice}</p>
