@@ -5,9 +5,10 @@ import { loadHeaderFooter } from './utils.js';
 
 loadHeaderFooter();
 console.log('there again');
-// console.log(dataSource.getData());
+
 
 const dataSource = new ProductData();
+console.log(dataSource.getData());
 const productId = getParams('product');
 let product = new ProductDetails(productId, dataSource);
 product.init();
@@ -35,14 +36,13 @@ function addToCart() {
 
 // getProductsData();
 
-// add listener to Add to Cart button
-document.getElementById('addToCart').addEventListener('click', addToCart);
+// // add listener to Add to Cart button
+// document.getElementById('addToCart').addEventListener('click', addToCart); // get rid of this
 
 // Function to add class to cart to access css that contains animation --KE
 function cartAnimation(){
   document.querySelector('.cart').classList.add('cartAnimate')
 }
 
-// adding listener to Add Cart button to animate backpack (cart) --KE
-document.querySelector('#addToCart').addEventListener('click', cartAnimation);
-
+// // adding listener to Add Cart button to animate backpack (cart) --KE
+// document.querySelector('#addToCart').addEventListener('click', cartAnimation);

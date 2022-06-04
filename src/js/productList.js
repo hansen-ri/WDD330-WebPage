@@ -16,6 +16,7 @@ export default class ProductList {
       console.log(list);
       // render the list 
       this.renderList(list);
+      document.querySelector('.title').innerHTML = this.category;
     }
     renderList(list){
 
@@ -27,9 +28,9 @@ export default class ProductList {
     }
 
     prepareTemplate(template, product) {
-    
+        console.log(product);
         template.querySelector('a').href +=  product.Id;
-        template.querySelector('img').src +=  product.Image.PrimaryMedium;
+        template.querySelector('img').src =  product.Images.PrimaryMedium;
         template.querySelector('img').alt +=  product.Name;
         template.querySelector('.card__brand').textContent +=  product.Brand.Name;
         template.querySelector('.card__name').textContent +=  product.NameWithoutBrand;
