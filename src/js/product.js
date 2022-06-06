@@ -1,4 +1,4 @@
-import ProductData from './productData.js';
+import ExternalServices from './externalServices.js';
 import ProductDetails from './productDetails.js';
 import { getParams } from './utils.js';
 import { loadHeaderFooter } from './utils.js';
@@ -7,7 +7,7 @@ loadHeaderFooter();
 console.log('there again');
 
 
-const dataSource = new ProductData();
+const dataSource = new ExternalServices();
 console.log(dataSource.getData());
 const productId = getParams('product');
 let product = new ProductDetails(productId, dataSource);
