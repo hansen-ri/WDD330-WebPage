@@ -1,3 +1,9 @@
+// import { getLocalStorage } from './cart.js';
+import { setLocalStorage, getLocalStorage } from './utils.js';
+import ExternalServices from './externalServices.js';
+
+const services = new ExternalServices;
+
 function formDataToJSON(formElement) {
   const formData = new FormData(formElement),
     convertedJSON = {};
@@ -5,7 +11,6 @@ function formDataToJSON(formElement) {
   formData.forEach(function (value, key) {
     convertedJSON[key] = value;
   });
-
   return convertedJSON;
 }
 
@@ -34,14 +39,17 @@ export default class CheckoutProcess {
    }
    init() {
      this.list = getLocalStorage(this.key);
+     console.log(this.list);
      this.calculateItemSummary();
+     this.calculateOrdertotal();
    }
    calculateItemSummary() {
      // calculate and display the total amount of the items in the cart, and the number of items.
      this.list.forEach(element => {
-        this.itemTotal += element;
+        this.itemTotal += element.FinalPrice;
      });
    }
+
    calculateOrdertotal() {
      // calculate the shipping and tax amounts. Then use them to along with the cart total to figure out the order total
      let length = this.list.length;
@@ -51,14 +59,16 @@ export default class CheckoutProcess {
      this.orderTotal = this.itemTotal + this.shipping + this.tax;
      this.displayOrderTotals();
    }
+
    displayOrderTotals() {
      // once the totals are all calculated display them in the order summary page
-     document.getElementById('subtotal').textContent = `$${this.itemTotal}`;
-     document.getElementById('shipping').textContent = `$${this.shipping}`;
-     document.getElementById('tax').textContent = `$${this.tax}`;
-     document.getElementById('order-total').textContent = `$${this.orderTotal}`;
+     document.getElementById('subtotal').textContent = `$${this.itemTotal.toFixed(2)}`;
+     document.getElementById('shipping').textContent = `$${this.shipping.toFixed(2)}`;
+     document.getElementById('tax').textContent = `$${this.tax.toFixed(2)}`;
+     document.getElementById('order-total').textContent = `$${this.orderTotal.toFixed(2)}`;
    }
-   async checkout(form) {
+
+   async checkoutSuccess(form) {
       const formElement = document.forms['checkout'];
 
       const json = formDataToJSON(formElement);
@@ -72,7 +82,13 @@ export default class CheckoutProcess {
       try {
         const res = await services.checkout(json);
         console.log(res);
+        setLocalStorage('so-cart', []); 
+        location.assign('/checkout/checkedout.html');
       } catch (err) {
+        // removeAllAlerts();
+        for(let message in err.message) {
+          alertMessage(err.message[message]);
+        }
         console.log(err);
       }
    } 

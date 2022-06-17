@@ -154,17 +154,17 @@ button, .button {
 }
 .products {
   padding: 0.5em;
-  max-width: 40%;
+  max-width: 75%;
   margin: auto;
 }
-.product-list {
+.product-list, .cart-product-list {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
   list-style-type: none;
   padding: 0;
 }
-.product-list a {
+.product-list a, .cart-product-list a {
   text-decoration: none;
   color: var(--dark-grey);
 }

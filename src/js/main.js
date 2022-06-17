@@ -2,7 +2,7 @@
 // import ProductList from './productList.js';
 import { loadHeaderFooter } from './utils.js';
 
-// loadHeaderFooter();
+loadHeaderFooter();
 
 // const dataSource = new ExternalServices('tents');
 // let element = document.querySelector('.product-list');
