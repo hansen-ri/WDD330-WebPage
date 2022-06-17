@@ -3,10 +3,11 @@ import CartList from './shoppingCart.js';
 
 loadHeaderFooter();
 
-const cart = new CartList('so-cart', document.querySelector('.product-list'));
+const cart = new CartList('so-cart', document.querySelector('.cart-product-list'));
 cart.init();
 
-function getLocalStorage(key) {
+export function getLocalStorage(key) {
+  console.log(key);
   return JSON.parse(localStorage.getItem(key));
   
 }
@@ -19,11 +20,11 @@ function getCartContents() {
   // console.log(Object.keys(cartItems));
   if (Object.keys(cartItems).length > 0) {
     const htmlItems = cartItems.map((item) => { 
-    markup += renderCartItem(item); 
+    markup = renderCartItem(item); 
     return markup;
       
     });
-    document.querySelector('.product-list').innerHTML = htmlItems.join('');
+    document.querySelector('.cart-product-list').innerHTML = htmlItems.join('');
   }
 }
 
@@ -42,7 +43,6 @@ function renderCartItem(item) {
   <p class="cart-card__quantity">qty: 1</p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
 </li>`;
-  console.log(newItem);
   return newItem;
 }
 
