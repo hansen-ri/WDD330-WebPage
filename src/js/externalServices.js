@@ -51,7 +51,7 @@ export default class ExternalServices {
          headers: {
             'Content-Type': 'application/json', 
          }, 
-         body: JSON.stringify(user)
+         body: JSON.stringify(creds)
       }
       const response = await fetch(baseURL + 'login', options).then(convertToJson);
       return response.accessToken;
@@ -67,7 +67,7 @@ export default class ExternalServices {
       const response = await fetch(baseURL + 'orders', options).then(convertToJson);
       return response;
    }
-
+   
 }
 
 
