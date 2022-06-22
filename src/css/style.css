@@ -90,6 +90,10 @@ button, .button {
   border: 0;
   font-size: var(--large-font);
 }
+button:hover, .button:hover{
+  background-color: var(--dark-grey);
+
+}
 
 .summary-div {
   display: flex;

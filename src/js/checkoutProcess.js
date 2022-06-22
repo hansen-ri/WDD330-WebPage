@@ -1,5 +1,5 @@
 // import { getLocalStorage } from './cart.js';
-import { setLocalStorage, getLocalStorage } from './utils.js';
+import { setLocalStorage, getLocalStorage, removeAllAlerts, alertMessage } from './utils.js';
 import ExternalServices from './externalServices.js';
 
 const services = new ExternalServices;
@@ -85,7 +85,7 @@ export default class CheckoutProcess {
         setLocalStorage('so-cart', []); 
         location.assign('/checkout/checkedout.html');
       } catch (err) {
-        // removeAllAlerts();
+        removeAllAlerts();
         for(let message in err.message) {
           alertMessage(err.message[message]);
         }
